@@ -7,6 +7,7 @@ public class Main {
 		SessionConnect newSession = new SessionConnect("tvanfossen", "Targaryen!23");
 		
 		newSession.searchInput("civil war");
+		System.out.println("test");
 	}
 
 }
