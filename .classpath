@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="CIS_350_P1/src"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/jackson-annotations-2.7.4.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/jackson-core-2.7.4.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/jackson-databind-2.7.4 (1).jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/slf4j-simple-1.7.21.jar"/>
+	<classpathentry kind="lib" path="CIS_350_P1/lib/themoviedbapi-1.5.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="CIS_350_P1/bin"/>
+</classpath>
