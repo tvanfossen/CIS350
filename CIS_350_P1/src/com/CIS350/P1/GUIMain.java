@@ -24,26 +24,6 @@ public class GUIMain {
 	JFrame mainFrame;
 	private JTextField keyword;
 	private JButton btnSearch;
-	private JButton button_1_1;
-	private JButton button_1;
-	private JButton button_2;
-	private JButton button_3;
-	private JButton button_4;
-	private JButton button_5;
-	private JButton button_6;
-	private JButton button_7;
-	private JButton button_10;
-	private JButton button_2_1;
-	private JLabel label;
-	private JLabel label_1;
-	private JLabel label_2;
-	private JLabel label_3;
-	private JLabel label_4;
-	private JLabel label_5;
-	private JLabel label_6;
-	private JLabel label_7;
-	private JLabel label_8;
-	private JLabel label_9;
 	private JList<String> list;
 
 	/**
@@ -106,166 +86,25 @@ public class GUIMain {
 		gbc_btnSearch.gridx = 3;
 		gbc_btnSearch.gridy = 1;
 		mainFrame.getContentPane().add(btnSearch, gbc_btnSearch);
+	
 		
-		label = new JLabel("");
-		GridBagConstraints gbc_label = new GridBagConstraints();
-		gbc_label.gridwidth = 3;
-		gbc_label.insets = new Insets(0, 0, 5, 5);
-		gbc_label.gridx = 1;
-		gbc_label.gridy = 2;
-		mainFrame.getContentPane().add(label, gbc_label);
-		
-		button_1_1 = new JButton("Information");
-		GridBagConstraints gbc_button_1_1 = new GridBagConstraints();
-		gbc_button_1_1.insets = new Insets(0, 0, 5, 0);
-		gbc_button_1_1.gridx = 4;
-		gbc_button_1_1.gridy = 2;
-		mainFrame.getContentPane().add(button_1_1, gbc_button_1_1);
-		
-		label_1 = new JLabel("");
-		GridBagConstraints gbc_label_1 = new GridBagConstraints();
-		gbc_label_1.gridwidth = 3;
-		gbc_label_1.insets = new Insets(0, 0, 5, 5);
-		gbc_label_1.gridx = 1;
-		gbc_label_1.gridy = 3;
-		mainFrame.getContentPane().add(label_1, gbc_label_1);
-		
-		label_2 = new JLabel("");
-		GridBagConstraints gbc_label_2 = new GridBagConstraints();
-		gbc_label_2.insets = new Insets(0, 0, 5, 5);
-		gbc_label_2.gridx = 1;
-		gbc_label_2.gridy = 4;
-		mainFrame.getContentPane().add(label_2, gbc_label_2);
-		
-		button_1 = new JButton("Information");
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.insets = new Insets(0, 0, 5, 0);
-		gbc_button_1.gridx = 4;
-		gbc_button_1.gridy = 4;
-		mainFrame.getContentPane().add(button_1, gbc_button_1);
-		
-		label_3 = new JLabel("");
-		GridBagConstraints gbc_label_3 = new GridBagConstraints();
-		gbc_label_3.insets = new Insets(0, 0, 5, 5);
-		gbc_label_3.gridx = 1;
-		gbc_label_3.gridy = 5;
-		mainFrame.getContentPane().add(label_3, gbc_label_3);
-		
-		button_2 = new JButton("Information");
-		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.insets = new Insets(0, 0, 5, 0);
-		gbc_button_2.gridx = 4;
-		gbc_button_2.gridy = 5;
-		mainFrame.getContentPane().add(button_2, gbc_button_2);
-		
-		label_4 = new JLabel("");
-		GridBagConstraints gbc_label_4 = new GridBagConstraints();
-		gbc_label_4.insets = new Insets(0, 0, 5, 5);
-		gbc_label_4.gridx = 1;
-		gbc_label_4.gridy = 6;
-		mainFrame.getContentPane().add(label_4, gbc_label_4);
-		
-		button_3 = new JButton("Information");
-		GridBagConstraints gbc_button_3 = new GridBagConstraints();
-		gbc_button_3.insets = new Insets(0, 0, 5, 0);
-		gbc_button_3.gridx = 4;
-		gbc_button_3.gridy = 6;
-		mainFrame.getContentPane().add(button_3, gbc_button_3);
-		
-		label_5 = new JLabel("");
-		GridBagConstraints gbc_label_5 = new GridBagConstraints();
-		gbc_label_5.insets = new Insets(0, 0, 5, 5);
-		gbc_label_5.gridx = 1;
-		gbc_label_5.gridy = 7;
-		mainFrame.getContentPane().add(label_5, gbc_label_5);
-		
-		button_4 = new JButton("Information");
-		GridBagConstraints gbc_button_4 = new GridBagConstraints();
-		gbc_button_4.insets = new Insets(0, 0, 5, 0);
-		gbc_button_4.gridx = 4;
-		gbc_button_4.gridy = 7;
-		mainFrame.getContentPane().add(button_4, gbc_button_4);
-		
-		label_6 = new JLabel("");
-		GridBagConstraints gbc_label_6 = new GridBagConstraints();
-		gbc_label_6.insets = new Insets(0, 0, 5, 5);
-		gbc_label_6.gridx = 1;
-		gbc_label_6.gridy = 8;
-		mainFrame.getContentPane().add(label_6, gbc_label_6);
-		
-		button_5 = new JButton("Information");
-		GridBagConstraints gbc_button_5 = new GridBagConstraints();
-		gbc_button_5.insets = new Insets(0, 0, 5, 0);
-		gbc_button_5.gridx = 4;
-		gbc_button_5.gridy = 8;
-		mainFrame.getContentPane().add(button_5, gbc_button_5);
-		
-		label_7 = new JLabel("");
-		GridBagConstraints gbc_label_7 = new GridBagConstraints();
-		gbc_label_7.insets = new Insets(0, 0, 5, 5);
-		gbc_label_7.gridx = 1;
-		gbc_label_7.gridy = 9;
-		mainFrame.getContentPane().add(label_7, gbc_label_7);
-		
-		button_6 = new JButton("Information");
-		GridBagConstraints gbc_button_6 = new GridBagConstraints();
-		gbc_button_6.insets = new Insets(0, 0, 5, 0);
-		gbc_button_6.gridx = 4;
-		gbc_button_6.gridy = 9;
-		mainFrame.getContentPane().add(button_6, gbc_button_6);
-		
-		label_8 = new JLabel("");
-		GridBagConstraints gbc_label_8 = new GridBagConstraints();
-		gbc_label_8.insets = new Insets(0, 0, 5, 5);
-		gbc_label_8.gridx = 1;
-		gbc_label_8.gridy = 10;
-		mainFrame.getContentPane().add(label_8, gbc_label_8);
-		
-		button_7 = new JButton("Information");
-		GridBagConstraints gbc_button_7 = new GridBagConstraints();
-		gbc_button_7.insets = new Insets(0, 0, 5, 0);
-		gbc_button_7.gridx = 4;
-		gbc_button_7.gridy = 10;
-		mainFrame.getContentPane().add(button_7, gbc_button_7);
-		
-		label_9 = new JLabel("");
-		GridBagConstraints gbc_label_9 = new GridBagConstraints();
-		gbc_label_9.insets = new Insets(0, 0, 5, 5);
-		gbc_label_9.gridx = 1;
-		gbc_label_9.gridy = 11;
-		mainFrame.getContentPane().add(label_9, gbc_label_9);
-		
-		button_10 = new JButton("Information");
-		GridBagConstraints gbc_button_10 = new GridBagConstraints();
-		gbc_button_10.insets = new Insets(0, 0, 5, 0);
-		gbc_button_10.gridx = 4;
-		gbc_button_10.gridy = 11;
-		mainFrame.getContentPane().add(button_10, gbc_button_10);
-
-		button_2_1 = new JButton("Information");
-		GridBagConstraints gbc_button_2_1 = new GridBagConstraints();
-		gbc_button_2_1.insets = new Insets(0, 0, 5, 0);
-		gbc_button_2_1.gridx = 4;
-		gbc_button_2_1.gridy = 3;
-		mainFrame.getContentPane().add(button_2_1, gbc_button_2_1);
-		
-		SessionConnect newSession = new SessionConnect(GUILogin.usernameText.getText(), GUILogin.passwordText.getText());
-		ArrayList<String> temp = newSession.searchInput(keyword.getText());
-		String[] data = {};
-		for (int i = 0; i< temp.size(); i++)
-		{
-			data[i] = temp.get(i);
-		}
-		list = new JList<String>(data);
 		GridBagConstraints gbc_list = new GridBagConstraints();
+		gbc_list.gridheight = 10;
 		gbc_list.insets = new Insets(0, 0, 0, 5);
 		gbc_list.fill = GridBagConstraints.BOTH;
 		gbc_list.gridx = 1;
-		gbc_list.gridy = 12;
+		gbc_list.gridy = 2;
 		mainFrame.getContentPane().add(list, gbc_list);
 		
 		btnSearch.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
+				  SessionConnect newSession = new SessionConnect(GUILogin.usernameText.getText(), GUILogin.passwordText.getText());
+				  ArrayList<String> temp = newSession.searchInput(keyword.getText());
+				  
+				  for (String i : temp)
+					{
+						
+					}
 					
 			  } 
 			} );
