@@ -8,7 +8,7 @@ public class Main {
 	{
 		SessionConnect newSession = new SessionConnect("tvanfossen", "Targaryen!23");
 		
-		ArrayList<String> temp = newSession.searchInput("game");
+		ArrayList<String> temp = newSession.searchInput("a");
 		
 		for (String i : temp)
 		{
