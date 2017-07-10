@@ -24,11 +24,20 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
+import info.movito.themoviedbapi.*;
+import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
+import info.movito.themoviedbapi.model.*;
+import info.movito.themoviedbapi.model.config.*;
+import info.movito.themoviedbapi.model.core.*;
+import info.movito.themoviedbapi.model.people.*;
+import java.util.*;
+
 public class GUIMain implements ListSelectionListener {
 
 	JFrame mainFrame;
 	private JTextField keyword;
 	private JButton btnSearch;
+	private JButton btnGrabMovie;
 	private JList list;
 	private DefaultListModel<String> listModel;
 	private SessionConnect newSession = new SessionConnect(GUILogin.usernameText.getText(), GUILogin.passwordText.getText());
@@ -94,6 +103,14 @@ public class GUIMain implements ListSelectionListener {
 		gbc_btnSearch.gridy = 1;
 		mainFrame.getContentPane().add(btnSearch, gbc_btnSearch);
 		
+		btnGrabMovie = new JButton("Grab Movie");
+		GridBagConstraints gbc_btnGrabMovie = new GridBagConstraints();
+		gbc_btnSearch.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSearch.gridx = 3;
+		gbc_btnSearch.gridy = 2;
+		mainFrame.getContentPane().add(btnGrabMovie, gbc_btnGrabMovie);
+		
 		list = new JList();
 		listModel = new DefaultListModel<String>();
 		list = new JList<String>(listModel);
@@ -111,28 +128,39 @@ public class GUIMain implements ListSelectionListener {
 		gbc_list.gridy = 2;
 		mainFrame.getContentPane().add(list, gbc_list);
 		
+		ArrayList<MovieDb> curList = new ArrayList<MovieDb>();
+		
 		btnSearch.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) {
-
 				 listModel.removeAllElements();
+				 curList.clear();
+				 MovieResultsPage temp = newSession.searchInput(keyword.getText());
 				 
-				 ArrayList<String> temp = newSession.searchInput(keyword.getText());
-				 
-				 for (String i : temp) {
-					 int index = list.getSelectedIndex();
-					 if( index == -1 ) {
-						 index = 0;
-					 } else {
-						 index++;
-					 }
-					 
-					 listModel.insertElementAt(i, index);
-				 }
+				 Iterator<MovieDb> iterator = temp.iterator();
+				 while (iterator.hasNext()) {
+				 	MovieDb movie = iterator.next();
+				 	curList.add(movie);
+				 	listModel.addElement(movie.getTitle());
+				 }	
 				 
 				 keyword.requestFocusInWindow();
 				 keyword.setText("");
 					
-			  } 
+			  }
+			} );
+		
+		btnGrabMovie.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) {
+				 MovieDb temp = new MovieDb();
+				 for (MovieDb m : curList) {
+					 if (m.getTitle().equals(list.getSelectedValue())){
+						 temp = m;
+						 break;
+					 }
+				 }
+				 
+				 System.out.println(temp.getPopularity());
+			  }
 			} );
 			
 		

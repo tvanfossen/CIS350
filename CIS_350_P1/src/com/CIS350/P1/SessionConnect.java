@@ -42,12 +42,16 @@ public class SessionConnect
 		return sessionToken;
 	}
 	
-	public ArrayList searchInput(String input)
+	public MovieResultsPage searchInput(String input)
 	{
-		ArrayList<String> output = new ArrayList<String>();
-		TmdbSearch tmdbSearch = tmdbApi.getSearch();
-		MovieResultsPage results = tmdbSearch.searchMovie(input, 0, "en", false, 0);
-		
+		if (input.length()>0)
+		{
+			//ArrayList<String> output = new ArrayList<String>();
+			TmdbSearch tmdbSearch = tmdbApi.getSearch();
+			return tmdbSearch.searchMovie(input, 0, "en", false, 0);
+		}
+		else return tmdbApi.getMovies().getTopRatedMovies("en",0);
+		/*
 		Iterator<MovieDb> iterator = results.iterator();
 		while (iterator.hasNext()) 
 		{
@@ -59,6 +63,6 @@ public class SessionConnect
 			output.add(temp);
 		}	
 		
-		return output;
+		return output;*/
 	}
 }
