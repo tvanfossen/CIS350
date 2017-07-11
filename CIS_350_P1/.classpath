@@ -3,15 +3,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/CIS_350_P"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/commons-lang3-3.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/guava-19.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/jackson-annotations-2.7.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/jackson-core-2.7.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/jackson-databind-2.7.4 (1).jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/slf4j-api-1.7.21.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/slf4j-simple-1.7.21.jar"/>
-	<classpathentry kind="lib" path="C:/Users/User1/Documents/GitHub/CIS350/CIS_350_P1/lib/themoviedbapi-1.5.jar"/>
-	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/jackson-annotations-2.7.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/jackson-core-2.7.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/jackson-databind-2.7.4 (1).jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/slf4j-api-1.7.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/slf4j-simple-1.7.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tristan/Documents/GitHub/CIS350/CIS_350_P1/lib/themoviedbapi-1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
