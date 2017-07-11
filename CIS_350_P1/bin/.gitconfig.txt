@@ -1,2 +1,0 @@
-name = Tristan VanFossen
-email = vanfosst@mail.gvsu.edu
