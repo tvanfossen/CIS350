@@ -25,6 +25,8 @@ public class SessionConnect
 	{	//Returns favorite movies of the logged in account
 		AccountID actId = new AccountID(getAccount().getId());
 		return tmdbApi.getAccount().getFavoriteMovies(sessionToken, actId);
+		
+		
 	}
 	
 	public SessionConnect(String username, String password)
@@ -42,23 +44,15 @@ public class SessionConnect
 		return sessionToken;
 	}
 	
-	public ArrayList searchInput(String input)
+	public MovieResultsPage searchInput(String input)
 	{
-		ArrayList<String> output = new ArrayList<String>();
-		TmdbSearch tmdbSearch = tmdbApi.getSearch();
-		MovieResultsPage results = tmdbSearch.searchMovie(input, 0, "en", false, 0);
+		if (input.length()>0){
+			TmdbSearch tmdbSearch = tmdbApi.getSearch();
+			return tmdbSearch.searchMovie(input, 0, "en", false, 0);
+		} else {
+			TmdbMovies tmdbMovies = tmdbApi.getMovies();
+			return tmdbMovies.getTopRatedMovies("en",0);
+		}
 		
-		Iterator<MovieDb> iterator = results.iterator();
-		while (iterator.hasNext()) 
-		{
-			MovieDb movie = iterator.next();
-			String temp = new String();
-			
-			temp += (movie.getTitle() + ',' + movie.getOriginalTitle() + ',' + movie.getReleaseDate());
-			
-			output.add(temp);
-		}	
-		
-		return output;
 	}
 }

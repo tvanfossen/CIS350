@@ -38,6 +38,7 @@ public class GUILogin {
 	 */
 	public GUILogin() {
 		initialize();
+		
 	}
 
 	/**
