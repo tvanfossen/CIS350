@@ -8,13 +8,6 @@ public class Main {
 	{
 		SessionConnect newSession = new SessionConnect("tvanfossen", "Targaryen!23");
 		
-		ArrayList<String> temp = newSession.searchInput("game");
-		
-		for (String i : temp)
-		{
-			System.out.println(i);
-		}
-		
 	}
 
 }

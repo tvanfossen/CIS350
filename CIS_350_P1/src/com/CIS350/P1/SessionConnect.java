@@ -25,8 +25,6 @@ public class SessionConnect
 	{	//Returns favorite movies of the logged in account
 		AccountID actId = new AccountID(getAccount().getId());
 		return tmdbApi.getAccount().getFavoriteMovies(sessionToken, actId);
-		
-		
 	}
 	
 	public SessionConnect(String username, String password)

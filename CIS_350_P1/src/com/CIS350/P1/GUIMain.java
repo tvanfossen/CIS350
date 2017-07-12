@@ -174,7 +174,7 @@ public class GUIMain implements ListSelectionListener {
 		btnMovieInformation = new JButton("Movie Information");
 		btnMovieInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!account_favorites_list.getSelectedValue().equals(null)) {
+				try {
 					String temp [] = account_favorites_list.getSelectedValue().toString().split(";");
 					for (MovieDb m : favoritesArray) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
@@ -184,7 +184,7 @@ public class GUIMain implements ListSelectionListener {
 							System.out.println(selectedMovie.getPopularity());
 						}
 					}
-				} else {
+				} catch (NullPointerException e) {
 					System.out.println("No movie selected");
 				}
 				
@@ -199,7 +199,7 @@ public class GUIMain implements ListSelectionListener {
 		btnSearchInformation = new JButton("Movie Information");
 		btnSearchInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!search_list.getSelectedValue().equals(null)) {
+				try {
 					String temp [] = search_list.getSelectedValue().split(";");
 					for (MovieDb m : resultsList) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
@@ -209,7 +209,7 @@ public class GUIMain implements ListSelectionListener {
 							System.out.println(selectedMovie.getPopularity());
 						}
 					}
-				} else {
+				} catch (NullPointerException e) {
 					System.out.println("No movie selected");
 				}
 				
