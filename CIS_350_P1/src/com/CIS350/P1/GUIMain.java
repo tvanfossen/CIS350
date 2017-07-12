@@ -174,18 +174,24 @@ public class GUIMain implements ListSelectionListener {
 		btnMovieInformation = new JButton("Movie Information");
 		btnMovieInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!account_favorites_list.getSelectedValue().equals(null)) {
+				try {
+					MovieInfoPopup infoPopup = new MovieInfoPopup();
 					String temp [] = account_favorites_list.getSelectedValue().toString().split(";");
 					for (MovieDb m : favoritesArray) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
 							MovieDb selectedMovie = m;
 							
+							infoPopup.titleText.setText(selectedMovie.getTitle());
+							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
+							//infoPopup.castText.setText(selectedMovie.getCast());
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
 					}
-				} else {
-					System.out.println("No movie selected");
+					
+					infoPopup.infoFrame.setVisible(true);
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(mainFrame, "No Movie Selected");
 				}
 				
 			}
@@ -199,18 +205,25 @@ public class GUIMain implements ListSelectionListener {
 		btnSearchInformation = new JButton("Movie Information");
 		btnSearchInformation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (!search_list.getSelectedValue().equals(null)) {
+				try {
+					MovieInfoPopup infoPopup = new MovieInfoPopup();
 					String temp [] = search_list.getSelectedValue().split(";");
 					for (MovieDb m : resultsList) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
 							MovieDb selectedMovie = m;
 							
+							infoPopup.titleText.setText(selectedMovie.getTitle());
+							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
+							//infoPopup.castText.setText(selectedMovie.getCast());
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
 					}
-				} else {
-					System.out.println("No movie selected");
+					
+					infoPopup.infoFrame.setVisible(true);
+					
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(mainFrame, "No Movie Selected");
 				}
 				
 			}
