@@ -7,6 +7,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -22,8 +23,11 @@ import javax.swing.event.ListSelectionListener;
 
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.people.PersonCast;
+import info.movito.themoviedbapi.model.people.PersonCrew;
 
 import javax.swing.JLabel;
+import javax.print.attribute.Size2DSyntax;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -180,17 +184,41 @@ public class GUIMain implements ListSelectionListener {
 					for (MovieDb m : favoritesArray) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
 							MovieDb selectedMovie = m;
+							String castString = new String();							
+							String tempDescription = new String();
+							String description = new String();													
+							tempDescription = selectedMovie.getOverview();
+							int textWidth = 50;
 							
+							for (int i = 1; i<tempDescription.length(); i++){
+								if (i%textWidth == 0) {
+									description += tempDescription.substring(i-textWidth, i) + '\n';
+								}
+							}
+							
+							List<PersonCrew> crew = selectedMovie.getCrew();
+							if (crew == null) {
+								System.out.println("Cast info not available for this movie");
+							} else {
+								Iterator<PersonCrew> iterator = crew.iterator();
+								while (iterator.hasNext()) {
+									PersonCrew person = iterator.next();
+									castString += person.getName() + " : " + person.getJob() + '\n';
+								}
+							}
+														
 							infoPopup.titleText.setText(selectedMovie.getTitle());
 							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
-							//infoPopup.castText.setText(selectedMovie.getCast());
+							infoPopup.castText.setText(castString);
+							infoPopup.descriptionText.setText(description);
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
 					}
 					
 					infoPopup.infoFrame.setVisible(true);
-				} catch (Exception e) {
+				} catch (NullPointerException e) {
+					e.printStackTrace();
 					JOptionPane.showMessageDialog(mainFrame, "No Movie Selected");
 				}
 				
@@ -211,10 +239,33 @@ public class GUIMain implements ListSelectionListener {
 					for (MovieDb m : resultsList) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
 							MovieDb selectedMovie = m;
+							String castString = new String();
+							String tempDescription = new String();
+							String description = new String();													
+							tempDescription = selectedMovie.getOverview();
+							int textWidth = 50;
+							
+							for (int i = 1; i<tempDescription.length(); i++){
+								if (i%textWidth == 0) {
+									description += tempDescription.substring(i-textWidth, i) + '\n';
+								}
+							}
+							
+							List<PersonCrew> crew = selectedMovie.getCrew();
+							if (crew == null) {
+								System.out.println("Cast info not available for this movie");
+							} else {
+								Iterator<PersonCrew> iterator = crew.iterator();
+								while (iterator.hasNext()) {
+									PersonCrew person = iterator.next();
+									castString += person.getName() + " : " + person.getJob() + '\n';
+								}
+							}
 							
 							infoPopup.titleText.setText(selectedMovie.getTitle());
 							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
-							//infoPopup.castText.setText(selectedMovie.getCast());
+							infoPopup.castText.setText(castString);
+							infoPopup.descriptionText.setText(description);
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
@@ -222,7 +273,8 @@ public class GUIMain implements ListSelectionListener {
 					
 					infoPopup.infoFrame.setVisible(true);
 					
-				} catch (Exception e) {
+				} catch (NullPointerException e) {
+					e.printStackTrace();
 					JOptionPane.showMessageDialog(mainFrame, "No Movie Selected");
 				}
 				

@@ -12,7 +12,7 @@ public class MovieInfoPopup {
 	JTextArea titleText = new JTextArea();
 	JTextArea releaseText = new JTextArea();
 	JTextArea castText = new JTextArea();
-	JTextArea crewText = new JTextArea();
+	JTextArea descriptionText = new JTextArea();
 
 	/**
 	 * Launch the application.
@@ -42,7 +42,7 @@ public class MovieInfoPopup {
 	 */
 	private void initialize() {
 		infoFrame = new JFrame();
-		infoFrame.setBounds(100, 100, 450, 300);
+		infoFrame.setBounds(100, 100, 700, 300);
 		//infoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		infoFrame.getContentPane().setLayout(null);
 		
@@ -59,8 +59,8 @@ public class MovieInfoPopup {
 		infoFrame.getContentPane().add(castText);
 		
 		//JTextArea crewText = new JTextArea();
-		crewText.setBounds(285, 110, 112, 124);
-		infoFrame.getContentPane().add(crewText);
+		descriptionText.setBounds(285, 110, 350, 124);
+		infoFrame.getContentPane().add(descriptionText);
 		
 		JLabel lblTitle = new JLabel("Title");
 		lblTitle.setBounds(10, 54, 66, 14);
@@ -74,8 +74,8 @@ public class MovieInfoPopup {
 		lblCast.setBounds(10, 115, 46, 14);
 		infoFrame.getContentPane().add(lblCast);
 		
-		JLabel lblCrew = new JLabel("Crew");
-		lblCrew.setBounds(208, 115, 46, 14);
-		infoFrame.getContentPane().add(lblCrew);
+		JLabel lblDescription = new JLabel("Description");
+		lblDescription.setBounds(208, 115, 46, 14);
+		infoFrame.getContentPane().add(lblDescription);
 	}
 }
