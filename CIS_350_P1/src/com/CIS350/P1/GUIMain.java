@@ -198,6 +198,7 @@ public class GUIMain implements ListSelectionListener {
 							
 							List<PersonCrew> crew = selectedMovie.getCrew();
 							if (crew == null) {
+								castString = "Cast info not available for this movie";
 								System.out.println("Cast info not available for this movie");
 							} else {
 								Iterator<PersonCrew> iterator = crew.iterator();
@@ -253,6 +254,7 @@ public class GUIMain implements ListSelectionListener {
 							
 							List<PersonCrew> crew = selectedMovie.getCrew();
 							if (crew == null) {
+								castString = "Cast info not available for this movie";
 								System.out.println("Cast info not available for this movie");
 							} else {
 								Iterator<PersonCrew> iterator = crew.iterator();
