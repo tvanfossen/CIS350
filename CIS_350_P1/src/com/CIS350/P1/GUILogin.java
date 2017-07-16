@@ -1,3 +1,9 @@
+/**
+ * @author Tristan VanFossen & Mark Baker
+ *
+ *	GUI login function. Creates page to input login/password info
+ */
+
 package com.CIS350.P1;
 
 import java.awt.EventQueue;
@@ -10,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+
 public class GUILogin {
 
 	private JFrame frame;
@@ -19,6 +26,8 @@ public class GUILogin {
 
 	/**
 	 * Launch the application.
+	 * 
+	 * @exception e prevents errors
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,6 +52,7 @@ public class GUILogin {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws excep in case of of invalid login info
 	 */
 	private void initialize() {
 		frame = new JFrame();
