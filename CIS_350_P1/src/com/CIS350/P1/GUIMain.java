@@ -1,3 +1,11 @@
+/**
+ * @author Tristan VanFossen & Mark Baker
+ * 
+ * 	Main page of search engine
+ * 	Multiple tabs for account info and searchable movies
+ * 	Single keyword search
+ */
+
 package com.CIS350.P1;
 
 import java.awt.EventQueue;
@@ -22,6 +30,7 @@ import javax.swing.event.ListSelectionListener;
 
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.people.PersonCrew;
 
 import javax.swing.JLabel;
 import javax.swing.DefaultListModel;
@@ -30,6 +39,7 @@ import javax.swing.JTextArea;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.List;
 import java.awt.GridLayout;
 
 public class GUIMain implements ListSelectionListener {
@@ -73,7 +83,10 @@ public class GUIMain implements ListSelectionListener {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * Creates multiple tabs and buttons to operate the various parts of the engine
 	 */
+	
 	private void initialize() {
 		mainFrame = new JFrame();
 		mainFrame.setBounds(100, 100, 913, 700);
@@ -180,10 +193,34 @@ public class GUIMain implements ListSelectionListener {
 					for (MovieDb m : favoritesArray) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
 							MovieDb selectedMovie = m;
+							String castString = new String();							
+							String tempDescription = new String();
+							String description = new String();													
+							tempDescription = selectedMovie.getOverview();
+							int textWidth = 50;
 							
+							for (int i = 1; i<tempDescription.length(); i++){
+								if (i%textWidth == 0) {
+									description += tempDescription.substring(i-textWidth, i) + '\n';
+								}
+							}
+							
+							List<PersonCrew> crew = selectedMovie.getCrew();
+							if (crew == null) {
+								castString = "Cast info not available for this movie";
+								System.out.println("Cast info not available for this movie");
+							} else {
+								Iterator<PersonCrew> iterator = crew.iterator();
+								while (iterator.hasNext()) {
+									PersonCrew person = iterator.next();
+									castString += person.getName() + " : " + person.getJob() + '\n';
+								}
+							}
+														
 							infoPopup.titleText.setText(selectedMovie.getTitle());
 							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
-							//infoPopup.castText.setText(selectedMovie.getCast());
+							infoPopup.crewText.setText(castString);
+							infoPopup.descriptionText.setText(description);
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
@@ -211,10 +248,34 @@ public class GUIMain implements ListSelectionListener {
 					for (MovieDb m : resultsList) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
 							MovieDb selectedMovie = m;
+							String castString = new String();							
+							String tempDescription = new String();
+							String description = new String();													
+							tempDescription = selectedMovie.getOverview();
+							int textWidth = 50;
 							
+							for (int i = 1; i<tempDescription.length(); i++){
+								if (i%textWidth == 0) {
+									description += tempDescription.substring(i-textWidth, i) + '\n';
+								}
+							}
+							
+							List<PersonCrew> crew = selectedMovie.getCrew();
+							if (crew == null) {
+								castString = "Cast info not available for this movie";
+								System.out.println("Cast info not available for this movie");
+							} else {
+								Iterator<PersonCrew> iterator = crew.iterator();
+								while (iterator.hasNext()) {
+									PersonCrew person = iterator.next();
+									castString += person.getName() + " : " + person.getJob() + '\n';
+								}
+							}
+														
 							infoPopup.titleText.setText(selectedMovie.getTitle());
 							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
-							//infoPopup.castText.setText(selectedMovie.getCast());
+							infoPopup.crewText.setText(castString);
+							infoPopup.descriptionText.setText(description);
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
@@ -239,14 +300,17 @@ public class GUIMain implements ListSelectionListener {
 
 				 searchListModel.removeAllElements();
 				 
-				 MovieResultsPage results = newSession.searchInput(keyword.getText());
-				 resultsList = new ArrayList<MovieDb>();
-				 Iterator<MovieDb> iterator = results.iterator();
+				// MovieResultsPage results = newSession.searchInput(keyword.getText());
+				 resultsList = newSession.multiKeywordSearch(keyword.getText());
+				 for (MovieDb i : resultsList) {
+					 searchListModel.addElement(i.getTitle() + ';' + i.getReleaseDate());
+				 }
+				 /*Iterator<MovieDb> iterator = results.iterator();
 				 while (iterator.hasNext()) {
 					 MovieDb movie = iterator.next();
 					 searchListModel.addElement(movie.getTitle()+';'+movie.getReleaseDate());
 					 resultsList.add(movie);
-				 }
+				 }*/
 			 
 				 keyword.requestFocusInWindow();
 				 keyword.setText("");

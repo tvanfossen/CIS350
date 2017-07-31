@@ -1,17 +1,23 @@
 package com.CIS350.P1;
 
+/**
+ * @author Tristan VanFossen & Mark Baker
+ * 
+ * Used to display specific movie information after a button is pressed on the GUIMain page
+ */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 
+
 public class MovieInfoPopup {
 
 	JFrame infoFrame;
 	JTextArea titleText = new JTextArea();
 	JTextArea releaseText = new JTextArea();
-	JTextArea castText = new JTextArea();
+	JTextArea descriptionText = new JTextArea();
 	JTextArea crewText = new JTextArea();
 
 	/**
@@ -39,10 +45,12 @@ public class MovieInfoPopup {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * Creates various parts of GUI, text areas can be updated as needed to display correct info
 	 */
 	private void initialize() {
 		infoFrame = new JFrame();
-		infoFrame.setBounds(100, 100, 450, 300);
+		infoFrame.setBounds(100, 100, 750, 400);
 		//infoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		infoFrame.getContentPane().setLayout(null);
 		
@@ -55,12 +63,12 @@ public class MovieInfoPopup {
 		infoFrame.getContentPane().add(releaseText);
 		
 		//JTextArea castText = new JTextArea();
-		castText.setBounds(86, 110, 112, 124);
-		infoFrame.getContentPane().add(castText);
+		crewText.setBounds(58, 110, 224, 400);
+		infoFrame.getContentPane().add(crewText);
 		
 		//JTextArea crewText = new JTextArea();
-		crewText.setBounds(285, 110, 112, 124);
-		infoFrame.getContentPane().add(crewText);
+		descriptionText.setBounds(380, 110, 450, 400);
+		infoFrame.getContentPane().add(descriptionText);
 		
 		JLabel lblTitle = new JLabel("Title");
 		lblTitle.setBounds(10, 54, 66, 14);
@@ -70,12 +78,12 @@ public class MovieInfoPopup {
 		lblReleaseDate.setBounds(10, 82, 74, 14);
 		infoFrame.getContentPane().add(lblReleaseDate);
 		
-		JLabel lblCast = new JLabel("Cast");
+		JLabel lblCast = new JLabel("Crew");
 		lblCast.setBounds(10, 115, 46, 14);
 		infoFrame.getContentPane().add(lblCast);
 		
-		JLabel lblCrew = new JLabel("Crew");
-		lblCrew.setBounds(208, 115, 46, 14);
+		JLabel lblCrew = new JLabel("Description");
+		lblCrew.setBounds(292, 115, 78, 14);
 		infoFrame.getContentPane().add(lblCrew);
 	}
 }

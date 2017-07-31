@@ -1,6 +1,13 @@
+/**
+ * @author Tristan VanFossen & Mark Baker
+ *
+ *	GUI login function. Creates page to input login/password info
+ */
+
 package com.CIS350.P1;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,16 +16,21 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+
 
 public class GUILogin {
 
 	private JFrame frame;
-	public static JTextField passwordText;
+	public static JPasswordField passwordText;
 	public static JTextField usernameText;
+	public static JLabel title;
 	private static GUILogin window = new GUILogin();
 
 	/**
 	 * Launch the application.
+	 * 
+	 * @exception e prevents errors
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,6 +55,7 @@ public class GUILogin {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws excep in case of of invalid login info
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -54,7 +67,7 @@ public class GUILogin {
 		btnEnter.setBounds(244, 164, 89, 23);
 		frame.getContentPane().add(btnEnter);
 		
-		passwordText = new JTextField();
+		passwordText = new JPasswordField();
 		passwordText.setBounds(148, 165, 86, 20);
 		frame.getContentPane().add(passwordText);
 		passwordText.setColumns(10);
@@ -63,6 +76,11 @@ public class GUILogin {
 		usernameText.setBounds(148, 139, 86, 20);
 		frame.getContentPane().add(usernameText);
 		usernameText.setColumns(10);
+		
+		title = new JLabel("Forgot the Movie?");
+		title.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		title.setBounds(131,42,122,32);
+		frame.getContentPane().add(title);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(65, 139, 71, 21);
@@ -87,4 +105,6 @@ public class GUILogin {
 			} );
 	}
 }
+
+
 
