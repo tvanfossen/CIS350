@@ -13,16 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -33,26 +30,19 @@ import javax.swing.event.ListSelectionListener;
 import info.movito.themoviedbapi.TmdbApi;
 import info.movito.themoviedbapi.TmdbMovies;
 import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
-import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.MovieDb;
-import info.movito.themoviedbapi.model.MovieImages;
-import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.people.PersonCast;
-import info.movito.themoviedbapi.model.people.PersonCrew;
 
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.Label;
 import java.util.List;
-import java.awt.GridLayout;
 import java.awt.Image;
 
 public class GUIMain implements ListSelectionListener {
@@ -70,7 +60,6 @@ public class GUIMain implements ListSelectionListener {
 	private JButton btnMovieInformation;
 	private JButton btnSearchInformation;
 	private ArrayList<MovieDb> resultsList;
-	private TmdbApi tmdb;
 
 	/**
 	 * Launch the application.
@@ -209,17 +198,7 @@ public class GUIMain implements ListSelectionListener {
 							TmdbApi tmdbApi = new TmdbApi("ce49e03c06591fd406f5be8992cdd711");
 							TmdbMovies tmdbMovies = tmdbApi.getMovies();
 							MovieDb selectedMovie = tmdbMovies.getMovie(m.getId(), "en", MovieMethod.credits, MovieMethod.reviews, MovieMethod.videos);
-							String castString = "";							
-							String tempDescription = new String();
-							String description = new String();													
-							tempDescription = selectedMovie.getOverview();
-							int textWidth = 50;
-							
-							for (int i = 1; i<tempDescription.length(); i++){
-								if (i%textWidth == 0) {
-									description += tempDescription.substring(i-textWidth, i) + '\n';
-								}
-							}
+							String castString = "";
 							
 							List<PersonCast> cast = selectedMovie.getCast();
 							if (cast == null) {
@@ -282,17 +261,7 @@ public class GUIMain implements ListSelectionListener {
 							TmdbApi tmdbApi = new TmdbApi("ce49e03c06591fd406f5be8992cdd711");
 							TmdbMovies tmdbMovies = tmdbApi.getMovies();
 							MovieDb selectedMovie = tmdbMovies.getMovie(m.getId(), "en", MovieMethod.credits, MovieMethod.reviews, MovieMethod.videos);
-							String castString = "";							
-							String tempDescription = new String();
-							String description = new String();													
-							tempDescription = selectedMovie.getOverview();
-							int textWidth = 50;
-							
-							for (int i = 1; i<tempDescription.length(); i++){
-								if (i%textWidth == 0) {
-									description += tempDescription.substring(i-textWidth, i) + '\n';
-								}
-							}
+							String castString = "";
 							
 							List<PersonCast> cast = selectedMovie.getCast();
 							if (cast == null) {

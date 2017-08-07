@@ -2,9 +2,7 @@ package com.CIS350.P1;
 
 import java.util.*;
 import info.movito.themoviedbapi.*;
-import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
 import info.movito.themoviedbapi.model.*;
-import info.movito.themoviedbapi.model.Collection;
 import info.movito.themoviedbapi.model.config.*;
 import info.movito.themoviedbapi.model.core.*;
 import info.movito.themoviedbapi.model.keywords.Keyword;
