@@ -36,6 +36,7 @@ import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
 import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.MovieDb;
 import info.movito.themoviedbapi.model.MovieImages;
+import info.movito.themoviedbapi.model.Video;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
 import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.people.PersonCrew;
@@ -229,9 +230,6 @@ public class GUIMain implements ListSelectionListener {
 								while (iterator.hasNext()) {
 									PersonCast person = iterator.next();
 									castString += person.getName().toString() + " : " + person.getCharacter().toString() + '\n';
-									System.out.println(person.getName());
-									System.out.println(person.getCharacter());
-									System.out.println();
 								}
 							}
 														
@@ -254,7 +252,6 @@ public class GUIMain implements ListSelectionListener {
 							infoPopup.lblPoster.setIcon(new ImageIcon(image));
 							infoPopup.infoFrame.getContentPane().add(infoPopup.lblPoster);
 							infoPopup.infoFrame.setVisible(true);
-							
 							
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
@@ -306,9 +303,6 @@ public class GUIMain implements ListSelectionListener {
 								while (iterator.hasNext()) {
 									PersonCast person = iterator.next();
 									castString += person.getName().toString() + " : " + person.getCharacter().toString() + '\n';
-									System.out.println(person.getName());
-									System.out.println(person.getCharacter());
-									System.out.println();
 								}
 							}
 														
@@ -326,12 +320,9 @@ public class GUIMain implements ListSelectionListener {
 							
 							Image image = ImageIO.read(url);
 							
-							
-							
 							infoPopup.lblPoster.setIcon(new ImageIcon(image));
 							infoPopup.infoFrame.getContentPane().add(infoPopup.lblPoster);
 							infoPopup.infoFrame.setVisible(true);
-							
 							
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());

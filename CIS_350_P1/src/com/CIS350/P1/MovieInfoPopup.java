@@ -6,12 +6,15 @@ package com.CIS350.P1;
  * Used to display specific movie information after a button is pressed on the GUIMain page
  */
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
 
 public class MovieInfoPopup {
@@ -22,6 +25,7 @@ public class MovieInfoPopup {
 	JTextArea descriptionText = new JTextArea();
 	JTextArea crewText = new JTextArea();
 	JLabel lblPoster = new JLabel();
+	JButton btnTrailer = new JButton("Trailer");
 
 	/**
 	 * Launch the application.
@@ -92,6 +96,22 @@ public class MovieInfoPopup {
 		
 		lblPoster.setBounds(55, 82, 491, 503);
 		infoFrame.getContentPane().add(lblPoster);
+		
+		
+		btnTrailer.setBounds(547, 187, 95, 23);
+		infoFrame.getContentPane().add(btnTrailer);
+		
+		btnTrailer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+			
+		});
 		
 	}
 }
