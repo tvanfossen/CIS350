@@ -1,5 +1,4 @@
-/**
- * @author Tristan VanFossen & Mark Baker
+/** * @author Tristan VanFossen & Mark Baker
  *
  *	GUI login function. Creates page to input login/password info
  */

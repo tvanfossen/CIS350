@@ -10,6 +10,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class MovieInfoPopup {
@@ -19,6 +21,7 @@ public class MovieInfoPopup {
 	JTextArea releaseText = new JTextArea();
 	JTextArea descriptionText = new JTextArea();
 	JTextArea crewText = new JTextArea();
+	JLabel lblPoster = new JLabel();
 
 	/**
 	 * Launch the application.
@@ -50,40 +53,45 @@ public class MovieInfoPopup {
 	 */
 	private void initialize() {
 		infoFrame = new JFrame();
-		infoFrame.setBounds(100, 100, 750, 400);
+		infoFrame.setBounds(100, 100, 1018, 702);
 		//infoFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		infoFrame.getContentPane().setLayout(null);
 		
 		//JTextArea titleText = new JTextArea();
-		titleText.setBounds(86, 49, 112, 22);
+		titleText.setBounds(176, 11, 284, 22);
 		infoFrame.getContentPane().add(titleText);
 		
 		//JTextArea releaseText = new JTextArea();
-		releaseText.setBounds(86, 77, 112, 22);
+		releaseText.setBounds(176, 49, 284, 22);
 		infoFrame.getContentPane().add(releaseText);
 		
-		//JTextArea castText = new JTextArea();
-		crewText.setBounds(58, 110, 224, 400);
-		infoFrame.getContentPane().add(crewText);
-		
-		//JTextArea crewText = new JTextArea();
-		descriptionText.setBounds(380, 110, 450, 400);
+		//JTextArea descriptionText = new JTextArea();
+		descriptionText.setBounds(663, 11, 312, 199);
 		infoFrame.getContentPane().add(descriptionText);
 		
+		//JTextArea crewText = new JTextArea();
+		crewText.setBounds(663, 241, 312, 399);
+		infoFrame.getContentPane().add(crewText);
+		
 		JLabel lblTitle = new JLabel("Title");
-		lblTitle.setBounds(10, 54, 66, 14);
+		lblTitle.setBounds(45, 16, 121, 14);
 		infoFrame.getContentPane().add(lblTitle);
 		
 		JLabel lblReleaseDate = new JLabel("Release Date");
-		lblReleaseDate.setBounds(10, 82, 74, 14);
+		lblReleaseDate.setBounds(45, 54, 121, 14);
 		infoFrame.getContentPane().add(lblReleaseDate);
 		
-		JLabel lblCast = new JLabel("Crew");
-		lblCast.setBounds(10, 115, 46, 14);
-		infoFrame.getContentPane().add(lblCast);
+		JLabel lblDescription = new JLabel("Description");
+		lblDescription.setBounds(547, 16, 106, 14);
+		infoFrame.getContentPane().add(lblDescription);
 		
-		JLabel lblCrew = new JLabel("Description");
-		lblCrew.setBounds(292, 115, 78, 14);
+		JLabel lblCrew = new JLabel("Crew");
+		lblCrew.setBounds(572, 246, 81, 14);
 		infoFrame.getContentPane().add(lblCrew);
+		
+		
+		lblPoster.setBounds(55, 82, 491, 503);
+		infoFrame.getContentPane().add(lblPoster);
+		
 	}
 }

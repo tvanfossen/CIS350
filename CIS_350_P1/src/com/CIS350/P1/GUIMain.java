@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -28,19 +30,29 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import info.movito.themoviedbapi.TmdbApi;
+import info.movito.themoviedbapi.TmdbMovies;
+import info.movito.themoviedbapi.TmdbMovies.MovieMethod;
+import info.movito.themoviedbapi.model.Artwork;
 import info.movito.themoviedbapi.model.MovieDb;
+import info.movito.themoviedbapi.model.MovieImages;
 import info.movito.themoviedbapi.model.core.MovieResultsPage;
+import info.movito.themoviedbapi.model.people.PersonCast;
 import info.movito.themoviedbapi.model.people.PersonCrew;
 
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Label;
 import java.util.List;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 public class GUIMain implements ListSelectionListener {
 
@@ -57,6 +69,7 @@ public class GUIMain implements ListSelectionListener {
 	private JButton btnMovieInformation;
 	private JButton btnSearchInformation;
 	private ArrayList<MovieDb> resultsList;
+	private TmdbApi tmdb;
 
 	/**
 	 * Launch the application.
@@ -100,7 +113,7 @@ public class GUIMain implements ListSelectionListener {
 		search_panel = new JPanel();
 		tabbedPane.addTab("Search", null, search_panel, null);
 		GridBagLayout gbl_search_panel = new GridBagLayout();
-		gbl_search_panel.columnWidths = new int[]{581, 57, 103, 0, 0};
+		gbl_search_panel.columnWidths = new int[]{513, 57, 103, 0, 0};
 		gbl_search_panel.rowHeights = new int[]{0, 402, 0};
 		gbl_search_panel.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_search_panel.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
@@ -192,8 +205,10 @@ public class GUIMain implements ListSelectionListener {
 					String temp [] = account_favorites_list.getSelectedValue().toString().split(";");
 					for (MovieDb m : favoritesArray) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
-							MovieDb selectedMovie = m;
-							String castString = new String();							
+							TmdbApi tmdbApi = new TmdbApi("ce49e03c06591fd406f5be8992cdd711");
+							TmdbMovies tmdbMovies = tmdbApi.getMovies();
+							MovieDb selectedMovie = tmdbMovies.getMovie(m.getId(), "en", MovieMethod.credits, MovieMethod.reviews, MovieMethod.videos);
+							String castString = "";							
 							String tempDescription = new String();
 							String description = new String();													
 							tempDescription = selectedMovie.getOverview();
@@ -205,22 +220,42 @@ public class GUIMain implements ListSelectionListener {
 								}
 							}
 							
-							List<PersonCrew> crew = selectedMovie.getCrew();
-							if (crew == null) {
+							List<PersonCast> cast = selectedMovie.getCast();
+							if (cast == null) {
 								castString = "Cast info not available for this movie";
 								System.out.println("Cast info not available for this movie");
 							} else {
-								Iterator<PersonCrew> iterator = crew.iterator();
+								Iterator<PersonCast> iterator = cast.iterator();
 								while (iterator.hasNext()) {
-									PersonCrew person = iterator.next();
-									castString += person.getName() + " : " + person.getJob() + '\n';
+									PersonCast person = iterator.next();
+									castString += person.getName().toString() + " : " + person.getCharacter().toString() + '\n';
+									System.out.println(person.getName());
+									System.out.println(person.getCharacter());
+									System.out.println();
 								}
 							}
 														
 							infoPopup.titleText.setText(selectedMovie.getTitle());
 							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
 							infoPopup.crewText.setText(castString);
-							infoPopup.descriptionText.setText(description);
+							infoPopup.descriptionText.setText(selectedMovie.getOverview());
+							infoPopup.descriptionText.setLineWrap(true);
+							
+							String imgResult = selectedMovie.getPosterPath();
+							
+							URL url = new URL("https://image.tmdb.org/t/p/" + "w342" + imgResult);
+							
+							System.out.println("url:" + url);
+							
+							Image image = ImageIO.read(url);
+							
+							
+							
+							infoPopup.lblPoster.setIcon(new ImageIcon(image));
+							infoPopup.infoFrame.getContentPane().add(infoPopup.lblPoster);
+							infoPopup.infoFrame.setVisible(true);
+							
+							
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
@@ -247,8 +282,10 @@ public class GUIMain implements ListSelectionListener {
 					String temp [] = search_list.getSelectedValue().split(";");
 					for (MovieDb m : resultsList) {
 						if (m.getTitle().equals(temp[0]) && m.getReleaseDate().equals(temp[1])) {
-							MovieDb selectedMovie = m;
-							String castString = new String();							
+							TmdbApi tmdbApi = new TmdbApi("ce49e03c06591fd406f5be8992cdd711");
+							TmdbMovies tmdbMovies = tmdbApi.getMovies();
+							MovieDb selectedMovie = tmdbMovies.getMovie(m.getId(), "en", MovieMethod.credits, MovieMethod.reviews, MovieMethod.videos);
+							String castString = "";							
 							String tempDescription = new String();
 							String description = new String();													
 							tempDescription = selectedMovie.getOverview();
@@ -260,22 +297,42 @@ public class GUIMain implements ListSelectionListener {
 								}
 							}
 							
-							List<PersonCrew> crew = selectedMovie.getCrew();
-							if (crew == null) {
+							List<PersonCast> cast = selectedMovie.getCast();
+							if (cast == null) {
 								castString = "Cast info not available for this movie";
 								System.out.println("Cast info not available for this movie");
 							} else {
-								Iterator<PersonCrew> iterator = crew.iterator();
+								Iterator<PersonCast> iterator = cast.iterator();
 								while (iterator.hasNext()) {
-									PersonCrew person = iterator.next();
-									castString += person.getName() + " : " + person.getJob() + '\n';
+									PersonCast person = iterator.next();
+									castString += person.getName().toString() + " : " + person.getCharacter().toString() + '\n';
+									System.out.println(person.getName());
+									System.out.println(person.getCharacter());
+									System.out.println();
 								}
 							}
 														
 							infoPopup.titleText.setText(selectedMovie.getTitle());
 							infoPopup.releaseText.setText(selectedMovie.getReleaseDate());
 							infoPopup.crewText.setText(castString);
-							infoPopup.descriptionText.setText(description);
+							infoPopup.descriptionText.setText(selectedMovie.getOverview());
+							infoPopup.descriptionText.setLineWrap(true);
+							
+							String imgResult = selectedMovie.getPosterPath();
+							
+							URL url = new URL("https://image.tmdb.org/t/p/" + "w342" + imgResult);
+							
+							System.out.println("url:" + url);
+							
+							Image image = ImageIO.read(url);
+							
+							
+							
+							infoPopup.lblPoster.setIcon(new ImageIcon(image));
+							infoPopup.infoFrame.getContentPane().add(infoPopup.lblPoster);
+							infoPopup.infoFrame.setVisible(true);
+							
+							
 							System.out.println(selectedMovie.getTitle());
 							System.out.println(selectedMovie.getPopularity());
 						}
