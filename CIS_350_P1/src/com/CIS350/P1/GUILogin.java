@@ -20,10 +20,19 @@ import javax.swing.JPasswordField;
 
 public class GUILogin {
 
+	/** Instance Variable for guilogin jframe **/
 	private JFrame frame;
+	
+	/** Instance Variable for password text field **/
 	public static JPasswordField passwordText;
+	
+	/** Instance Variable for username text field **/
 	public static JTextField usernameText;
+	
+	/** Instance Variable for title jlabel **/
 	public static JLabel title;
+	
+	/** Instance Variable for gui login window **/
 	private static GUILogin window = new GUILogin();
 
 	/**

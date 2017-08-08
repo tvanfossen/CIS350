@@ -1,5 +1,11 @@
 package com.CIS350.P1;
 
+/**
+ * @author Tristan VanFossen & Mark Baker
+ * 
+ * Used to gather information from the tmdbapi and user account
+ */
+
 import java.util.*;
 import info.movito.themoviedbapi.*;
 import info.movito.themoviedbapi.model.*;
@@ -10,10 +16,16 @@ import info.movito.themoviedbapi.model.people.*;
 
 public class SessionConnect
 {
-	private static TmdbApi tmdbApi;
-	private static SessionToken sessionToken;
-	private TmdbMovies movies;
+	/** Instance Variable for tmdbapi object **/
+	private TmdbApi tmdbApi;
 	
+	/** Instance Variable for sessiontoken object **/
+	private SessionToken sessionToken;
+	
+	/**
+	 * 
+	 * @return Returns account to grab user info from
+	 */
 	public Account getAccount()	
 	{	//Returns the account to obtain default info for main screen
 		TmdbAccount tmdbAccount = tmdbApi.getAccount();
@@ -21,20 +33,36 @@ public class SessionConnect
 		return act;
 	}
 	
+	/**
+	 * 
+	 * @return Returns the favorites list to be iterated through for the account tab of GUI
+	 */
+	
 	public MovieResultsPage getFavorites()
 	{	//Returns favorite movies of the logged in account
 		AccountID actId = new AccountID(getAccount().getId());
 		return tmdbApi.getAccount().getFavoriteMovies(sessionToken, actId);
-		
-		
 	}
 	
+	/**
+	 * 
+	 * @param username string username
+	 * @param password string password
+	 * 
+	 * Correct username/password entry creates the object otherwise the GUI login class will throw an exception/popup window
+	 */
 	public SessionConnect(String username, String password)
 	{
 		tmdbApi = new TmdbApi("ce49e03c06591fd406f5be8992cdd711");
 		sessionToken = getSessionToken(username, password);		
 	}
 	
+	/**
+	 * 
+	 * @param username 
+	 * @param password
+	 * @return Obtains the session token for user info in GUI
+	 */
 	public SessionToken getSessionToken(String username, String password)
 	{	
 		TmdbAuthentication tmdbAuth = tmdbApi.getAuthentication();
@@ -44,6 +72,12 @@ public class SessionConnect
 		return sessionToken;
 	}
 	
+	/**Single word search, find moves that match the keyword
+	 * 
+	 * @param input keyword input for search
+	 * @return if there is an input, return the movie results else return the top rated movies
+	 * 
+	 */
 	public MovieResultsPage searchInput(String input)
 	{
 		if (input.length()>0){
@@ -56,6 +90,14 @@ public class SessionConnect
 		
 	}
 	
+	/**Multi Keyword search. Finds movies that match all of the keywords given. Searches
+	 * title, description, cast, and crew for keyword matches. Displays the top rated movies of
+	 * those that are found.
+	 * 
+	 * @param input keyword input for search
+	 * @return if there is an input, return the movie results else return the top rated movies
+	 * 
+	 */
 	public ArrayList<MovieDb> multiKeywordSearch (String input) {
 		
 		System.out.println("SEARCHING FOR: " + input);

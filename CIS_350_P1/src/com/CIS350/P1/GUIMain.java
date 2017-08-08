@@ -47,18 +47,43 @@ import java.awt.Image;
 
 public class GUIMain implements ListSelectionListener {
 
+	/** Instance Variable for guimain frame**/
 	JFrame mainFrame;
+	
+	/** Instance Variable for keyword jtextfield **/
 	private JTextField keyword;
+	
+	/** Instance Variable for search button jbutton **/
 	private JButton btnSearch;
+	
+	/** Instance Variable for search list jlist **/
 	private JList<String> search_list;
+	
+	/** Instance Variable for search list defaultlistmodel **/
 	private DefaultListModel<String> searchListModel;
+	
+	/** Instance Variable for sessionconnect object **/
 	private SessionConnect newSession = new SessionConnect(GUILogin.usernameText.getText(), GUILogin.passwordText.getText());
+	
+	/** Instance Variable for tabbed pane jtabbed pane **/
 	private JTabbedPane tabbedPane;
+	
+	/** Instance Variable for search panel jpanel **/
 	private JPanel search_panel;
+	
+	/** Instance Variable for account favorites panel jpanel **/
 	private JPanel account_favorites_panel;
+	
+	/** Instance Variable for account favorites list jlist **/
 	private JList account_favorites_list;
+	
+	/** Instance Variable for movie information button jbutton **/
 	private JButton btnMovieInformation;
+	
+	/** Instance Variable for search information button jbutton **/
 	private JButton btnSearchInformation;
+	
+	/** Instance Variable for results list arraylist **/
 	private ArrayList<MovieDb> resultsList;
 
 	/**

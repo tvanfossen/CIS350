@@ -17,12 +17,25 @@ import javax.swing.JButton;
 
 public class MovieInfoPopup {
 
+	/** Instance Variable for movieinfopopup Jframe **/
 	JFrame infoFrame;
+	
+	/** Instance Variable for title text jtextarea object **/
 	JTextArea titleText = new JTextArea();
+	
+	/** Instance Variable for release text jtextarea object **/
 	JTextArea releaseText = new JTextArea();
+	
+	/** Instance Variable for description text jtextarea object **/
 	JTextArea descriptionText = new JTextArea();
+	
+	/** Instance Variable for crew text jtextarea object **/
 	JTextArea crewText = new JTextArea();
+	
+	/** Instance Variable for poster jlabel object **/
 	JLabel lblPoster = new JLabel();
+	
+	/** Instance Variable for trailer jbutton object **/
 	JButton btnTrailer = new JButton("Trailer");
 
 	/**
